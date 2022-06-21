@@ -10,7 +10,38 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="">Home</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="manufacturers">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="manufacturers/new">New Manufacture</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="models">Vehicle Models</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="models/new">New Vehicle Model</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="automobiles">Automobiles</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="automobiles/new">New Automobile</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="technicians/new">New Technician</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="appointments/new">New Appointment</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="appointments">Appointments</NavLink>
+            </li>
           </ul>
+          
         </div>
       </div>
     </nav>
