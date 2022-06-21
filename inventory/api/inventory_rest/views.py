@@ -19,24 +19,21 @@ def api_automobiles(request):
             encoder=AutomobileEncoder,
         )
     else:
+        content = json.loads(request.body)
+        print(content)
         try:
-            content = json.loads(request.body)
-            model_id = content["model_id"]
-            model = VehicleModel.objects.get(pk=model_id)
+            model_id = content["model"]
+            model = VehicleModel.objects.get(id=model_id)
             content["model"] = model
-            auto = Automobile.objects.create(**content)
-            return JsonResponse(
+        except VehicleModel.DoesNotExist:
+            return JsonResponse({"Message: Invalid model id"}, status=400, safe=False)
+
+        auto = Automobile.objects.create(**content)
+        return JsonResponse(
                 auto,
                 encoder=AutomobileEncoder,
                 safe=False,
             )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the automobile"}
-            )
-            response.status_code = 400
-            return response
-
 
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_automobile(request, vin):
@@ -164,23 +161,21 @@ def api_vehicle_models(request):
             encoder=VehicleModelEncoder
         )
     else:
+        content = json.loads(request.body)
+        print('started else statement')
         try:
-            content = json.loads(request.body)
-            manufacturer_id = content["manufacturer_id"]
+            manufacturer_id = content["manufacturer"]
             manufacturer = Manufacturer.objects.get(id=manufacturer_id)
             content["manufacturer"] = manufacturer
-            model = VehicleModel.objects.create(**content)
-            return JsonResponse(
+        except Manufacturer.DoesNotExist:
+            return JsonResponse({"Message: Invalid manufacturer id"}, status=400, safe=False)
+            
+        model = VehicleModel.objects.create(**content)
+        return JsonResponse(
                 model,
                 encoder=VehicleModelEncoder,
                 safe=False,
-            )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the vehicle model"}
-            )
-            response.status_code = 400
-            return response
+        )
 
 
 @require_http_methods(["DELETE", "GET", "PUT"])
