@@ -8,7 +8,11 @@ import AutomobilesForm from './AutomobilesForm';
 import TechnicianForm from './TechnicianForm';
 import AppointmentsForm from './AppointmentsForm';
 import AppointmentsList from './AppointmentsList'
+import SalesPersonForm from './SalesPersonForm';
+import PotentialCustomerForm from './PotentialCustomerForm';
 import React from 'react';
+import ManufacturersForm from './ManufacturersForm';
+import Manufacturers from './Manufacturers';
 
 class App extends React.Component {
   constructor(props){
@@ -73,11 +77,17 @@ class App extends React.Component {
             <Route path="" element={<VehicleModels models = {this.state.models} /> } />
             <Route path="new" element={<VehicleModelsForm />} />
           </Route>
+          <Route path="manufacturers/">
+            <Route path="" element={<Manufacturers manufacturers = {this.state.manufacturers} /> } />
+            <Route path="new" element={<ManufacturersForm />} />
+          </Route>
           <Route path="automobiles/">
             <Route path="" element={<Automobiles autos = {this.state.autos} /> } />
             <Route path="new" element={<AutomobilesForm />} /> 
           </Route>
           <Route path="technicians/new" element={<TechnicianForm />} />
+          <Route path="sales_persons/new" element={<SalesPersonForm />} />
+          <Route path="potential_customers/new" element={<PotentialCustomerForm />} />
           <Route path="appointments/">
             <Route path="" element={<AppointmentsList appointments = {this.state.appointments} /> } />
             <Route path="new" element={<AppointmentsForm />} /> 
