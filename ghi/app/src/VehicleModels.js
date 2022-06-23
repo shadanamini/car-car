@@ -21,7 +21,7 @@ function VehicleModels(props) {
                     <tr key={model.href}>
                         <td>{ model.name }</td>
                         <td>{ model.manufacturer.name }</td>
-                        <td className = 'photo'><img src={ model.picture_url } alt="vehicle_photo"/></td>
+                        <td><img src={ model.picture_url } alt="vehicle_photo"/></td>
                     </tr>
                 );           
             })}

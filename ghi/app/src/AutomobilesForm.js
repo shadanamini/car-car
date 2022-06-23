@@ -31,6 +31,7 @@ class AutomobilesForm extends React.Component {
         };
         const response = await fetch(automobileUrl, fetchConfig);
         if (response.ok) {
+            alert('New automobile is created!')
             const newAutomobile = await response.json();
             console.log(newAutomobile);
 
@@ -70,6 +71,7 @@ class AutomobilesForm extends React.Component {
         const response = await fetch(url);
   
         if (response.ok) {
+
             const data = await response.json();
             this.setState({models: data.models});    
         }

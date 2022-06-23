@@ -109,11 +109,11 @@ class AppointmentsForm extends React.Component {
                 <label htmlFor="style_name">Customer Name</label>
               </div>
               <div className="form-floating mb-3 datepicker">
-                <input value={this.state.date} onChange={this.handleDateChange} placeholder="Date" name="date" required type="text" id="date" className="form-control"/>
+                <input value={this.state.date} onChange={this.handleDateChange} placeholder="Date" name="date" required type="date" id="date" className="form-control"/>
                 <label htmlFor="style_name">Date</label>
               </div>
               <div className="form-floating mb-3 datepicker">
-                <input value={this.state.time} onChange={this.handleTimeChange} placeholder="Time" name="time" required type="text" id="time" className="form-control"/>
+                <input value={this.state.time} onChange={this.handleTimeChange} placeholder="Time" name="time" required type="time" id="time" className="form-control"/>
                 <label htmlFor="style_name">Time</label>
               </div>
               <div className="form-floating mb-3">
