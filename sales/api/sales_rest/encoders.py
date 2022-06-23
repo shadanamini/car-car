@@ -1,5 +1,5 @@
 from common.json import ModelEncoder
-from .models import SalesPerson, PotentialCustomer
+from .models import Sales, SalesPerson, PotentialCustomer, AutoMobileVO
 
 class SalesPersonEncoder(ModelEncoder):
     model = SalesPerson
@@ -14,4 +14,21 @@ class PotentialCustomerEncoder(ModelEncoder):
         "customer_name",
         "customer_address",
         "customer_phone_number",
+    ]
+
+class AutoMobileVOEncoder(ModelEncoder):
+    model = AutoMobileVO
+    properties = [
+        "id",
+        "import_href",
+        "vin",
+    ]
+
+class SalesEncoder(ModelEncoder):
+    model = Sales
+    properties = [
+        "automobile",
+        "salesperson",
+        "potentialcustomer",
+        "salesprice",
     ]

@@ -1,8 +1,8 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-from .encoders import SalesPersonEncoder, PotentialCustomerEncoder
-from .models import SalesPerson, PotentialCustomer
+from .encoders import SalesPersonEncoder, PotentialCustomerEncoder, SalesEncoder
+from .models import SalesPerson, PotentialCustomer, Sales
 
 @require_http_methods(["GET", "POST"])
 def api_sales_persons(request):
@@ -89,4 +89,47 @@ def api_potential_customer(request, pk):
                 safe=False,
             )
         except PotentialCustomer.DoesNotExist:
+            return JsonResponse({"message": "Does not exist"})
+
+@require_http_methods(["GET", "POST"])
+def api_sales(request):
+    if request.method == "GET":
+        sales = Sales.objects.all()
+        return JsonResponse(
+            {"sales": sales},
+            encoder=SalesEncoder,
+        )
+    else:
+            content = json.loads(request.body)
+            sales = Sales.objects.create(**content)
+            return JsonResponse(
+                sales,
+                encoder=SalesEncoder,
+                safe=False,
+            )
+
+@require_http_methods(["DELETE", "GET"])
+def api_sale(request, pk):
+    if request.method == "GET":
+        try:
+            sale = Sales.objects.get(id=pk)
+            return JsonResponse(
+                sale,
+                encoder=SalesEncoder,
+                safe=False
+            )
+        except Sales.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+    else:
+        try:
+            sale = Sales.objects.get(id=pk)
+            sale.delete()
+            return JsonResponse(
+                sale,
+                encoder=SalesEncoder,
+                safe=False,
+            )
+        except Sales.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})

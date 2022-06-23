@@ -13,6 +13,7 @@ import PotentialCustomerForm from './PotentialCustomerForm';
 import React from 'react';
 import ManufacturersForm from './ManufacturersForm';
 import Manufacturers from './Manufacturers';
+import SalesRecordForm from './SalesRecordForm';
 
 class App extends React.Component {
   constructor(props){

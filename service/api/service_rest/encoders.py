@@ -1,9 +1,9 @@
 from common.json import ModelEncoder
-from .models import Technician, Appointment, AutomobileVO
+from .models import Technician, Appointment, AutoMobileVO
 import json
 
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
+class AutoMobileVOEncoder(ModelEncoder):
+    model = AutoMobileVO
     properties = [
         "id",
         "import_href",
@@ -35,8 +35,5 @@ class AppointmentEncoder(ModelEncoder):
     }
 
     def get_extra_data(self, o):
-        count = AutomobileVO.objects.filter(vin=o.vin).count()
+        count = AutoMobileVO.objects.filter(vin=o.vin).count()
         return {"vip": count > 0}
-
-
-
