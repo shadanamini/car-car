@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
@@ -63,7 +64,7 @@ def api_appointments(request):
             encoder=AppointmentEncoder
         )
     else:
-        # try:
+        try:
             content = json.loads(request.body)
             technician_id = content["technician"]        
             technician = Technician.objects.get(id=technician_id)
@@ -74,15 +75,16 @@ def api_appointments(request):
                 encoder=AppointmentEncoder,
                 safe=False,
             )
-        # except:
-        #     response = JsonResponse(
-        #         {"message": "Could not create the appointment"}
-        #     )
-        #     response.status_code = 400
-        #     return response
+        except IntegrityError:
+            response = JsonResponse(
+                {"message": "Matching VIN vehicle is already scheduled for service"}
+            )
+            
+            response.status_code = 400
+            return response
 
 
-@require_http_methods(["DELETE", "GET", "PUT"])
+@require_http_methods(["DELETE", "GET"])
 def api_appointment(request, pk):
     if request.method == "GET":
         try:
@@ -107,3 +109,24 @@ def api_appointment(request, pk):
             )
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
+
+@require_http_methods(["PUT"])
+def api_cancel_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.cancel()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False,
+    )
+
+
+@require_http_methods(["PUT"])
+def api_finish_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.finish()
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False,
+    )
