@@ -122,7 +122,7 @@ async onFinish(appointment) {
           </Route>
           <Route path="manufacturers/">
             <Route path="" element={<Manufacturers manufacturers = {this.state.manufacturers} /> } />
-            <Route path="new" element={<ManufacturersForm />} />
+            <Route path="new" element={<ManufacturersForm load={this.loadManufacturers} />} />
           </Route>
           <Route path="automobiles/">
             <Route path="" element={<Automobiles autos = {this.state.autos} /> } />

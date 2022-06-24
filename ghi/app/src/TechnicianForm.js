@@ -1,6 +1,6 @@
 import React from 'react'
 
-class VehicleModelsForm extends React.Component {
+class TechnicianForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,7 +38,6 @@ class VehicleModelsForm extends React.Component {
                 employeeNumber: '',
             };
             this.setState(cleared);
-            this.props.load();
         }
     }
 
@@ -78,4 +77,4 @@ class VehicleModelsForm extends React.Component {
     }
   }
 
-export default VehicleModelsForm
+export default TechnicianForm
