@@ -64,7 +64,7 @@ def api_appointments(request):
             encoder=AppointmentEncoder
         )
     else:
-        try:
+        # try:
             content = json.loads(request.body)
             technician_id = content["technician"]        
             technician = Technician.objects.get(id=technician_id)
@@ -75,13 +75,13 @@ def api_appointments(request):
                 encoder=AppointmentEncoder,
                 safe=False,
             )
-        except IntegrityError:
-            response = JsonResponse(
-                {"message": "Matching VIN vehicle is already scheduled for service"}
-            )
+        # except IntegrityError:
+        #     response = JsonResponse(
+        #         {"message": "Matching VIN vehicle is already scheduled for service"}
+        #     )
             
-            response.status_code = 400
-            return response
+        #     response.status_code = 400
+        #     return response
 
 
 @require_http_methods(["DELETE", "GET"])

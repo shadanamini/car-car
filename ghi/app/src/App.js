@@ -69,13 +69,17 @@ class App extends React.Component {
     }
   }
 
-async onCancel(appointment) {
-    if(window.confirm('Are you sure you want to cancel this appointment?')){
+  async onCancel(appointment) {
+    if(window.confirm('Are you sure you finished this appointment?')){
         const appointmentUrl = `http://localhost:8080/api/appointments/${appointment.id}/cancelled`
         const fetchConfig = {
             method: "put",
         }
     const response = await fetch(appointmentUrl, fetchConfig)
+    if(response.ok){
+        const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointment.id)
+        this.setState({appointments: newAppointments})
+      }
     }
   }
 
