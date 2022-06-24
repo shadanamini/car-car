@@ -42,6 +42,7 @@ class AutomobilesForm extends React.Component {
                 model: '',
             };
             this.setState(cleared);
+            this.props.load();  
         }
     }
 
@@ -73,7 +74,7 @@ class AutomobilesForm extends React.Component {
         if (response.ok) {
 
             const data = await response.json();
-            this.setState({models: data.models});    
+            this.setState({models: data.models});  
         }
     }
   render() {

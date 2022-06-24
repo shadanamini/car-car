@@ -38,6 +38,7 @@ class VehicleModelsForm extends React.Component {
                 employeeNumber: '',
             };
             this.setState(cleared);
+            this.props.load();
         }
     }
 

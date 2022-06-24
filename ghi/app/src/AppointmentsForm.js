@@ -49,6 +49,7 @@ class AppointmentsForm extends React.Component {
                 technician:'',
             };
             this.setState(cleared);
+            this.props.load();
         }
     }
 

@@ -130,3 +130,13 @@ def api_finish_appointment(request, pk):
         encoder=AppointmentEncoder,
         safe=False,
     )
+
+@require_http_methods(["GET"])
+def api_service_history(request, vin):
+    appointment = Appointment.objects.filter(vin=vin)
+    return JsonResponse(
+        appointment,
+        encoder=AppointmentEncoder,
+        safe=False,
+    )
+    

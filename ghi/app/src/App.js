@@ -21,12 +21,10 @@ class App extends React.Component {
       models: [],
       autos: [],
       appointments: [],
-      manufacturers: [],
     };
     this.loadVehicleModels = this.loadVehicleModels.bind(this);
     this.loadAutomobiles = this.loadAutomobiles.bind(this);
     this.loadAppointments = this.loadAppointments.bind(this);
-    this.loadManufacturers = this.loadManufacturers.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onFinish = this.onFinish.bind(this);
   }
@@ -53,13 +51,7 @@ class App extends React.Component {
       this.setState({appointments: data.appointments});
     }
   }
-  async loadManufacturers() {
-    const response = await fetch("http://localhost:8100/api/manufacturers/");
-    if(response.ok){
-      const data = await response.json();
-      this.setState({manufacturers: data.manufacturers})
-    }
-  }
+
 
   async onCancel(appointment){
     console.log('hello', appointment)
@@ -137,7 +129,6 @@ async onFinish(appointment){
     this.loadVehicleModels()
     this.loadAutomobiles()
     this.loadAppointments()
-    this.loadManufacturers()
   }
  
   render(){
@@ -148,21 +139,21 @@ async onFinish(appointment){
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers/">
-            <Route path="" element={<Manufacturers manufacturers = {this.state.manufacturers} /> } />
+            <Route path="" element={<Manufacturers /> } />
             <Route path="new" element={<ManufacturersForm />} />
           </Route>
           <Route path="models/">
             <Route path="" element={<VehicleModels models = {this.state.models} /> } />
-            <Route path="new" element={<VehicleModelsForm />} />
+            <Route path="new" element={<VehicleModelsForm load={this.loadVehicleModels} />} />
           </Route>
           <Route path="automobiles/">
             <Route path="" element={<Automobiles autos = {this.state.autos} /> } />
-            <Route path="new" element={<AutomobilesForm />} /> 
+            <Route path="new" element={<AutomobilesForm load={this.loadAutomobiles} />} /> 
           </Route>
           <Route path="technicians/new" element={<TechnicianForm />} />
           <Route path="appointments/">
             <Route path="" element={<AppointmentsList appointments = {this.state.appointments} onCancel = {this.onCancel} onFinish = {this.onFinish}/> } />
-            <Route path="new" element={<AppointmentsForm />} />
+            <Route path="new" element={<AppointmentsForm load={this.loadAppointments} />} />
             <Route path="history" element ={<SearchHistory appointments = {this.state.appointments} onSearch = {this.onSearch}/>} /> 
           </Route>
         </Routes>

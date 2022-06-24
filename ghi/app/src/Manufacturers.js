@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './index.css'
 
 function Manufacturers(props) {
+    let [manufacturers, setManufacturers] = useState([])     
+    useEffect(()=>{
+        fetch("http://localhost:8100/api/manufacturers/")
+            .then((response)=>response.json())
+            .then((response)=>setManufacturers(response.manufacturers))
+            .catch((error)=>console.error(error));    
+    }, [])
     return (
         <>
         <p></p>
@@ -13,7 +20,7 @@ function Manufacturers(props) {
                 </tr>
                 </thead>
                 <tbody>
-                {props.manufacturers.map(manufacturer => {
+                {manufacturers.map(manufacturer => {
                     return (
                     <tr key={manufacturer.href}>
                         <td>{ manufacturer.name }</td>
