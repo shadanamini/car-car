@@ -32,7 +32,7 @@ class AutoMobileVO(models.Model):
         return reverse("api_automobile", kwargs={"vin": self.vin})
     
     def __str__(self):
-        return self.vin 
+        return str(self.vin) + ' ' + str(self.id)
 
 class Sales(models.Model):
     automobile = models.ForeignKey(
@@ -50,4 +50,4 @@ class Sales(models.Model):
         related_name="potentialcustomer",
         on_delete=models.CASCADE
     )
-    salesprice = models.FloatField()
+    salesprice = models.PositiveSmallIntegerField()
