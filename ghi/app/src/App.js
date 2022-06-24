@@ -84,8 +84,8 @@ async onCancel(appointment) {
 async loadManufacturers() {
     const response = await fetch("http://localhost:8100/api/manufacturers/");
     if(response.ok) {
-        console.log('ok response')
-        const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointment.id)
+        console.log(this)
+        const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointments.id)
         console.log(newAppointments)
         this.setState({appointments: newAppointments})
         console.log('set the state')
