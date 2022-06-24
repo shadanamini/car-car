@@ -49,7 +49,6 @@ class App extends React.Component {
     const response = await fetch("http://localhost:8090/api/sales/");
     if(response.ok) {
       const data = await response.json();
-      console.log(data);
       this.setState({sales: data.sales});
     }
   }
@@ -71,7 +70,6 @@ class App extends React.Component {
   }
 
 async onCancel(appointment) {
-    console.log('hello', appointment)
     if(window.confirm('Are you sure you want to cancel this appointment?')){
         const appointmentUrl = `http://localhost:8080/api/appointments/${appointment.id}/cancelled`
         const fetchConfig = {
@@ -81,19 +79,15 @@ async onCancel(appointment) {
     }
   }
 
-async loadManufacturers() {
+  async loadManufacturers() {
     const response = await fetch("http://localhost:8100/api/manufacturers/");
-    if(response.ok) {
-        console.log(this)
-        const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointments.id)
-        console.log(newAppointments)
-        this.setState({appointments: newAppointments})
-        console.log('set the state')
+    if(response.ok){
+      const data = await response.json();
+      this.setState({manufacturers: data.manufacturers})
     }
   }
 
 async onFinish(appointment) {
-  console.log('hello', appointment)
   if(window.confirm('Are you sure you finished this appointment?')){
       const appointmentUrl = `http://localhost:8080/api/appointments/${appointment.id}/finished`
       const fetchConfig = {
@@ -101,11 +95,8 @@ async onFinish(appointment) {
       }
   const response = await fetch(appointmentUrl, fetchConfig)
   if(response.ok){
-      console.log('ok response')
       const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointment.id)
-      console.log(newAppointments)
       this.setState({appointments: newAppointments})
-      console.log('set the state')
     }
   }
 }
@@ -125,10 +116,6 @@ async onFinish(appointment) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="manufacturers/">
-            <Route path="" element={<Manufacturers /> } />
-            <Route path="new" element={<ManufacturersForm />} />
-          </Route>
           <Route path="models/">
             <Route path="" element={<VehicleModels models = {this.state.models} /> } />
             <Route path="new" element={<VehicleModelsForm load={this.loadVehicleModels} />} />

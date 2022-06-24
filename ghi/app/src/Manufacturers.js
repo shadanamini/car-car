@@ -9,13 +9,11 @@ function Manufacturers(props) {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    {console.log(props)}
                     <th>Name</th>
                 </tr>
                 </thead>
                 <tbody>
                 {props.manufacturers.map(manufacturer => {
-                    console.log(manufacturer)
                     return (
                     <tr key={manufacturer.href}>
                         <td>{ manufacturer.name }</td>
