@@ -89,42 +89,6 @@ async onFinish(appointment){
   }
 }
 
-// async onSearch(event){
-//   event.preventDefault();
-//   const appointmentUrl = `http://localhost:8080/api/appointments/`
-//   const fetchConfig = {
-//     method: "get",
-//   }
-//   const response = await fetch(appointmentUrl, fetchConfig)
-//   console.log(response)
-//   if(response.ok){
-//     const value = event.target.value
-//     this.setState({vin: value})
-//     // const newAppointments = this.state.appointments.filter((appoint) => appoint.vin == vin)
-//     // this.setState=({appointments: newAppointments})
-//   }
-// }
-
-
-
-//   async onDelete(appointment){
-//     console.log('hello', appointment)
-//     if(window.confirm('Are you sure you want to delete this appointment?')){
-//         const appointmentUrl = `http://localhost:8080/api/appointments/${appointment.id}`
-//         const fetchConfig = {
-//             method: "delete",
-//         }
-//     const response = await fetch(appointmentUrl, fetchConfig)
-//     if(response.ok){
-//         console.log('ok response')
-//         const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointment.id)
-//         console.log(newAppointments)
-//         this.setState({appointments: newAppointments})
-//         console.log('set the state')
-//     }
-//     }
-// }
-
   async componentDidMount(){
     this.loadVehicleModels()
     this.loadAutomobiles()
@@ -162,43 +126,5 @@ async onFinish(appointment){
     )
   }
 }
-
-// finish: 
-// class based components
-// backend: instead of having view that handles delete, use put request for both. if service was deleted, it wasn't deleted.
-// field on the service appointments(like presentation) that tells me the appointment status. By default, it is scheduled. When you click the 
-// change status. when ticket is completed 
-
-
-
-// import { useState, useEffect } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-// function App() {
-//   let [clue, setClue] = useState({question: 'loading...', answer: ''})
-//   // setClue({question: 'Different question', answer: 'New!'})
-//   async function fetchClue() {
-//     const res = await fetch('https://jservice.xyz/api/random-clue');
-//     const newClue = await res.json();
-//     setClue(newClue)
-//   }
-//   useEffect(() => {
-//     fetchClue()
-//   }, [])
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           {clue.question}
-//         </p>
-//         <p>
-//           {clue.answer}
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
-// export default App;
 
 export default App;
