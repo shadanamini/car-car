@@ -1,8 +1,8 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-from .encoders import SalesPersonEncoder, PotentialCustomerEncoder, SalesEncoder
-from .models import SalesPerson, PotentialCustomer, Sales
+from .encoders import AutoMobileVOEncoder, SalesPersonEncoder, PotentialCustomerEncoder, SalesEncoder
+from .models import AutoMobileVO, SalesPerson, PotentialCustomer, Sales
 
 @require_http_methods(["GET", "POST"])
 def api_sales_persons(request):
@@ -55,6 +55,7 @@ def api_potential_customers(request):
         return JsonResponse(
             {"potentialcustomers": potentialcustomers},
             encoder=PotentialCustomerEncoder,
+            safe=False,
         )
     else:
             content = json.loads(request.body)
@@ -98,9 +99,13 @@ def api_sales(request):
         return JsonResponse(
             {"sales": sales},
             encoder=SalesEncoder,
+            safe=False,
         )
     else:
             content = json.loads(request.body)
+            automobile_id = content["automobile"]
+            automobile = AutoMobileVO.objects.get(id=automobile_id)
+            content["automobile"] = automobile
             sales = Sales.objects.create(**content)
             return JsonResponse(
                 sales,
@@ -133,3 +138,21 @@ def api_sale(request, pk):
             )
         except Sales.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
+
+@require_http_methods(["GET"])
+def api_sales_history(request, sale):
+    sales = Sales.objects.filter(sales=sales)
+    return JsonResponse(
+        sales,
+        encoder=SalesEncoder,
+        safe=False,
+    )
+
+@require_http_methods(["GET"])
+def api_automobile_vos(request):
+    automobile_vos = AutoMobileVO.objects.all()
+    return JsonResponse(
+        automobile_vos,
+        encoder = AutoMobileVOEncoder,
+        safe=False,
+    )
