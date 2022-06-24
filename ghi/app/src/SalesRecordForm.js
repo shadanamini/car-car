@@ -8,6 +8,9 @@ class SalesRecordForm extends React.Component {
             salespersons: [],
             customer: [],
             salesprice: '',
+            automobile: '',
+            salesperson: '',
+            potentialcustomer: '',
         }
 
         this.handleAutomobileChange = this.handleAutomobileChange.bind(this)
