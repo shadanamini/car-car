@@ -14,6 +14,7 @@ import React from 'react';
 import ManufacturersForm from './ManufacturersForm';
 import Manufacturers from './Manufacturers';
 import SalesRecordForm from './SalesRecordForm';
+import SalesRecordList from './SalesRecordList';
 
 class App extends React.Component {
   constructor(props){
@@ -23,11 +24,14 @@ class App extends React.Component {
       autos: [],
       appointments: [],
       manufacturers: [],
+      sales: [],
     };
+
     this.loadVehicleModels = this.loadVehicleModels.bind(this);
     this.loadAutomobiles = this.loadAutomobiles.bind(this);
     this.loadAppointments = this.loadAppointments.bind(this);
     this.loadManufacturers = this.loadManufacturers.bind(this);
+
   }
 
   async loadVehicleModels() {
@@ -38,13 +42,23 @@ class App extends React.Component {
     }
   }
 
+  async loadSales() {
+    const response = await fetch("http://localhost:8090/api/sales/");
+    if(response.ok) {
+      const data = await response.json();
+      console.log(data);
+      this.setState({sales: data.sales});
+    }
+  }
+
   async loadAutomobiles() {
     const response = await fetch("http://localhost:8100/api/automobiles/");
-    if(response.ok){
+    if(response.ok) {
       const data = await response.json();
       this.setState({autos: data.autos});
     }
   }
+
   async loadAppointments() {
     const response = await fetch("http://localhost:8080/api/appointments/");
     if(response.ok){
@@ -52,6 +66,7 @@ class App extends React.Component {
       this.setState({appointments: data.appointments});
     }
   }
+
   async loadManufacturers() {
     const response = await fetch("http://localhost:8100/api/manufacturers/");
     if(response.ok){
@@ -65,6 +80,7 @@ class App extends React.Component {
     this.loadAutomobiles()
     this.loadAppointments()
     this.loadManufacturers()
+    this.loadSales()
   }
  
   render(){
@@ -88,6 +104,8 @@ class App extends React.Component {
           </Route>
           <Route path="technicians/new" element={<TechnicianForm />} />
           <Route path="sales_persons/new" element={<SalesPersonForm />} />
+          <Route path="sales/" element={<SalesRecordList sales = {this.state.sales} />} />
+          <Route path="sales/new" element={<SalesRecordForm loadAutomobiles = {this.loadAutomobiles} />} />
           <Route path="potential_customers/new" element={<PotentialCustomerForm />} />
           <Route path="appointments/">
             <Route path="" element={<AppointmentsList appointments = {this.state.appointments} /> } />
@@ -99,38 +117,5 @@ class App extends React.Component {
     )
   }
 }
-
-
-
-
-// import { useState, useEffect } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-// function App() {
-//   let [clue, setClue] = useState({question: 'loading...', answer: ''})
-//   // setClue({question: 'Different question', answer: 'New!'})
-//   async function fetchClue() {
-//     const res = await fetch('https://jservice.xyz/api/random-clue');
-//     const newClue = await res.json();
-//     setClue(newClue)
-//   }
-//   useEffect(() => {
-//     fetchClue()
-//   }, [])
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           {clue.question}
-//         </p>
-//         <p>
-//           {clue.answer}
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
-// export default App;
 
 export default App;
