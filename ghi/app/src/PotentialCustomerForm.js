@@ -24,7 +24,7 @@ class PotentialCustomerForm extends React.Component {
         data.customer_phone_number = data.customerPhoneNumber;
         delete data.customerPhoneNumber;
         console.log(data)
-        const PotentialCustomerUrl = 'http://localhost:8090/api/sales_persons/';
+        const PotentialCustomerUrl = 'http://localhost:8090/api/potential_customers/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
