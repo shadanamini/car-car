@@ -3,7 +3,7 @@
 Team:
 
 * Shadan - Sales
-* Emma - Service
+* Emma - Service: in localhost:8080/admin, Statuses should have 3 data.  id:1 name: SCHEDULED, id:2 name: CANCELLED, id:3 name: FINISHED 
 
 ## Design
 
