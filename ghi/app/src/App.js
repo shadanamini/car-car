@@ -97,42 +97,6 @@ async onFinish(appointment){
   }
 }
 
-// async onSearch(event){
-//   event.preventDefault();
-//   const appointmentUrl = `http://localhost:8080/api/appointments/`
-//   const fetchConfig = {
-//     method: "get",
-//   }
-//   const response = await fetch(appointmentUrl, fetchConfig)
-//   console.log(response)
-//   if(response.ok){
-//     const value = event.target.value
-//     this.setState({vin: value})
-//     // const newAppointments = this.state.appointments.filter((appoint) => appoint.vin == vin)
-//     // this.setState=({appointments: newAppointments})
-//   }
-// }
-
-
-
-//   async onDelete(appointment){
-//     console.log('hello', appointment)
-//     if(window.confirm('Are you sure you want to delete this appointment?')){
-//         const appointmentUrl = `http://localhost:8080/api/appointments/${appointment.id}`
-//         const fetchConfig = {
-//             method: "delete",
-//         }
-//     const response = await fetch(appointmentUrl, fetchConfig)
-//     if(response.ok){
-//         console.log('ok response')
-//         const newAppointments = this.state.appointments.filter((appoint) => appoint.id !== appointment.id)
-//         console.log(newAppointments)
-//         this.setState({appointments: newAppointments})
-//         console.log('set the state')
-//     }
-//     }
-// }
-
   async componentDidMount(){
     this.loadVehicleModels()
     this.loadAutomobiles()

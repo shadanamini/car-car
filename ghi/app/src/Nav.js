@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import { menuItems } from './menuItems';
+import MenuItems from './MenuItem'
 
 function Nav() {
   return (
@@ -9,8 +11,15 @@ function Nav() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+          <ul className="menus">
+          {menuItems.map((menu, index) => {
+            return <MenuItems items={menu} key={index} />
+          })}
+
+
+
+
+            {/* <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="">Home</NavLink>
             </li>
             <li className="nav-item">
@@ -42,9 +51,8 @@ function Nav() {
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="appointments/history">Service History</NavLink>
-            </li>
-          </ul>
-          
+            </li> */}
+          </ul>          
         </div>
       </div>
     </nav>
