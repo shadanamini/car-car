@@ -40,6 +40,7 @@ class VehicleModelsForm extends React.Component {
                 manufacturer: '',
             };
             this.setState(cleared);
+            this.props.load();
         }
     }
 

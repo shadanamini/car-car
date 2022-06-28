@@ -14,7 +14,7 @@ class ManufacturersForm extends React.Component {
         event.preventDefault();
         const data = {...this.state}
         console.log(data)
-        const ManufacturerUrl = 'http://localhost:8100/api/manufacturers/';
+        const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -22,15 +22,16 @@ class ManufacturersForm extends React.Component {
                 'Content-Type': 'application/json',
             }
         }
-        const response = await fetch(ManufacturerUrl, fetchConfig)
+        const response = await fetch(manufacturerUrl, fetchConfig)
         if (response.ok) {
-            alert('New manufacturer is created!')
+            alert('New manufacturer created!')
             const newManufacturer = await response.json()
             console.log(newManufacturer);
             const cleared = {
                 name: '',
             };
             this.setState(cleared);
+            this.props.load();
         }
     }
 

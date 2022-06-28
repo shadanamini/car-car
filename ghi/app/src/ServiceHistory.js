@@ -5,20 +5,10 @@ class ServiceHistory extends React.Component {
         super(props)
         this.state = {
             vin: '',
-            appointments: []
+            appointments:[],
         };
         this.handleVinChange = this.handleVinChange.bind(this)
-        this.handleAppointmentChange=this.handleAppointmentChange.bind(this)
         this.onSearch = this.onSearch.bind(this)
-    }
-
-    async componentDidMount() {
-        const response = await fetch("http://localhost:8080/api/appointments/");
-
-        if(response.ok){
-            const data = await response.json();
-            this.setState({appointments: data.appointments});
-        }
     }
 
     handleVinChange(event) {
@@ -26,16 +16,11 @@ class ServiceHistory extends React.Component {
         this.setState({vin: value})
     }     
 
-    handleAppointmentChange(event){
-        const value = event.target.value
-        this.setState({appointment: value})
-    }
-
     async onSearch(event) {
         event.preventDefault();
         const data = {...this.state}
         console.log("data", data)
-        const appointmentsUrl = 'http://localhost:8080/api/appointments/';
+        const appointmentsUrl = `http://localhost:8080/api/appointments/${data.vin}`; 
         const fetchConfig = {
             method: "get",
             headers: {
@@ -46,11 +31,9 @@ class ServiceHistory extends React.Component {
         if (response.ok) {
             const results = await response.json()
             console.log(results)
-
-        }
+            this.setState({appointments: results})
+        } 
     }
-
- 
 
     render() {
       return (
@@ -58,10 +41,12 @@ class ServiceHistory extends React.Component {
         <p></p>
         <div>
           <div className="input-group">
-            <form onSubmit={this.onSearch} id="search-vin" className='search-bar'>
+            <form onSubmit={this.onSearch} id="search-bar" className='search-bar'>
                 <input value={this.state.vin} onChange={this.handleVinChange} 
                 placeholder="Enter VIN" name="vin" required type="search" id="search" 
                 className="form-control rounded" />
+                <p></p>
+                <button className="btn btn-primary">Search</button>
             </form>
         </div>
         <p></p>
@@ -76,10 +61,11 @@ class ServiceHistory extends React.Component {
                     <th>Time</th>   
                     <th>Technician</th>   
                     <th>Reason</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                {this.state.appointments.filter(appointment => appointment.vin === this.state.vin).map(appointment => {
+                {this.state.appointments.map(appointment => {
                     return (
                     <tr key={appointment.href}>
                         <td>{ appointment.vin }</td>
@@ -88,6 +74,7 @@ class ServiceHistory extends React.Component {
                         <td>{ appointment.time }</td>
                         <td>{ appointment.technician.employee_name }</td>
                         <td>{ appointment.reason }</td>
+                        <td>{ appointment.status.name }</td>
                     </tr>
                 );           
             })}

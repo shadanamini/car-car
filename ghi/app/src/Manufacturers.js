@@ -5,11 +5,11 @@ function Manufacturers(props) {
     return (
         <>
         <p></p>
-        <h2>Manufacturers</h2>
+        <h2>Manufacturer</h2>
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th> 
+                    <th>Name</th>
                 </tr>
                 </thead>
                 <tbody>

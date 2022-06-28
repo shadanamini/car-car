@@ -1,6 +1,6 @@
 import React from 'react'
 
-class TechnicianForm extends React.Component {
+class SalesPersonForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +20,7 @@ class TechnicianForm extends React.Component {
         data.employee_number = data.employeeNumber;
         delete data.employeeNumber;
         console.log(data)
-        const TechnicianUrl = 'http://localhost:8080/api/technicians/';
+        const SalesPersonsUrl = 'http://localhost:8090/api/sales_persons/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -28,11 +28,11 @@ class TechnicianForm extends React.Component {
                 'Content-Type': 'application/json',
             }
         }
-        const response = await fetch(TechnicianUrl, fetchConfig)
+        const response = await fetch(SalesPersonsUrl, fetchConfig)
         if (response.ok) {
-            alert('New automotive technician is created!')
-            const newTechnician = await response.json()
-            console.log(newTechnician);
+            alert('New sales person is created!')
+            const newSalesPerson = await response.json()
+            console.log(newSalesPerson);
             const cleared = {
                 employeeName: '',
                 employeeNumber: '',
@@ -57,11 +57,11 @@ class TechnicianForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create a technician</h1>
-            <form onSubmit={this.handleSubmit} id="create-technician-form">
+            <h1>Create a sales person</h1>
+            <form onSubmit={this.handleSubmit} id="create-salesperson-form">
               <div className="form-floating mb-3">
                 <input value={this.state.employeeName} onChange={this.handleEmployeeNameChange} placeholder="EmployeeName" name="employee_name" required type="text" id="employee_name" className="form-control"/>
-                <label htmlFor="fabric">Technician Name</label>
+                <label htmlFor="fabric">Employee Name</label>
               </div>
               <div className="form-floating mb-3">
                 <input value={this.state.employeeNumber} onChange={this.handleEmployeeNumberChange} placeholder="EmployeeNumber" name="employee_number" required type="text" id="employee_number" className="form-control"/>
@@ -77,4 +77,4 @@ class TechnicianForm extends React.Component {
     }
   }
 
-export default TechnicianForm
+export default SalesPersonForm
