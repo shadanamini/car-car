@@ -1,8 +1,5 @@
 export const menuItems=[
     {
-        title: "Home"
-    },
-    {
         title: "Inventory", 
         submenu: [
             {
