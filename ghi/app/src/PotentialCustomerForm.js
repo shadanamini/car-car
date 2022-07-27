@@ -67,21 +67,21 @@ class PotentialCustomerForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create a potential customer</h1>
+            <h1>Create Potential Customer</h1>
             <form onSubmit={this.handleSubmit} id="create-potentialcustomer-form">
               <div className="form-floating mb-3">
                 <input value={this.state.customerName} onChange={this.handleCustomerNameChange} placeholder="CustomerName" name="customer_name" required type="text" id="customer_name" className="form-control"/>
-                <label htmlFor="fabric">Customer name</label>
+                <label htmlFor="fabric">Customer Name</label>
               </div>
               <div className="form-floating mb-3">
                 <input value={this.state.customerAddress} onChange={this.handleCustomerAddressChange} placeholder="CustomerAddress" name="customer_address" required type="text" id="customer_address" className="form-control"/>
-                <label htmlFor="style_name">Customer address</label>
+                <label htmlFor="style_name">Customer Address</label>
               </div>
               <div className="form-floating mb-3">
                 <input value={this.state.customerPhoneNumber} onChange={this.handleCustomerPhoneNumberChange} placeholder="CustomerPhoneNumber" name="customer_phonenumber" required type="text" id="customer_phonenumber" className="form-control"/>
-                <label htmlFor="style_name">Customer phone number</label>
+                <label htmlFor="style_name">Customer Phone Number</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-primary">Create!</button>
             </form>
           </div>
         </div>

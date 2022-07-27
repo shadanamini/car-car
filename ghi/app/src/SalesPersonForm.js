@@ -57,7 +57,7 @@ class SalesPersonForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create a sales person</h1>
+            <h1>Create Sales Person</h1>
             <form onSubmit={this.handleSubmit} id="create-salesperson-form">
               <div className="form-floating mb-3">
                 <input value={this.state.employeeName} onChange={this.handleEmployeeNameChange} placeholder="EmployeeName" name="employee_name" required type="text" id="employee_name" className="form-control"/>
@@ -67,7 +67,7 @@ class SalesPersonForm extends React.Component {
                 <input value={this.state.employeeNumber} onChange={this.handleEmployeeNumberChange} placeholder="EmployeeNumber" name="employee_number" required type="text" id="employee_number" className="form-control"/>
                 <label htmlFor="style_name">Employee Number</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-primary">Create!</button>
             </form>
           </div>
         </div>
