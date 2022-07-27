@@ -75,7 +75,7 @@ class VehicleModelsForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create a vehicle model</h1>
+            <h1>Create Vehicle Model</h1>
             <form onSubmit={this.handleSubmit} id="create-vehicle-model-form">
               <div className="form-floating mb-3">
                 <input value={this.state.name} onChange={this.handleNameChange} placeholder="Name" name="name" required type="text" id="name" className="form-control"/>
@@ -83,11 +83,11 @@ class VehicleModelsForm extends React.Component {
               </div>
               <div className="form-floating mb-3 datepicker">
                 <input value={this.state.pictureUrl} onChange={this.handlePictureUrlChange} placeholder="Picture Url" name="picture_url" required type="text" id="picture_url" className="form-control"/>
-                <label htmlFor="style_name">Picture Url</label>
+                <label htmlFor="style_name">Picture URL</label>
               </div>
               <div className="mb-3">
                 <select onChange={this.handleManufacturerChange} value={this.state.manufacturer} name="manufacturer" id="manufacturer" className='form-select' required>
-                    <option value="">Choose a Manufacturer</option>
+                    <option value="">Choose Manufacturer</option>
                     {this.state.manufacturers.map(manufacturer => {
                         return (
                             <option key={manufacturer.id} value={manufacturer.id}>
@@ -97,7 +97,7 @@ class VehicleModelsForm extends React.Component {
                     })}
                 </select>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button className="btn btn-primary">Create!</button>
             </form>
           </div>
         </div>
