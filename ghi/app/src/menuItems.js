@@ -53,6 +53,16 @@ export const menuItems=[
         ]
     },
     {
-        title: "Sales"
+        title: "Sales",
+        submenu: [
+            {
+                title: "New Sales Person",
+                href: "/sales_persons/new",
+            },
+            {
+                title: "New Potential Customer",
+                href: "/potential_customers/new",
+            },
+        ]
     },
 ];
