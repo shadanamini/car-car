@@ -46,7 +46,9 @@ class ServiceHistory extends React.Component {
                 placeholder="Enter VIN" name="vin" required type="search" id="search" 
                 className="form-control rounded" />
                 <p></p>
-                <button className="btn btn-primary">Search</button>
+                <div class="col-md-12 text-center">
+                    <button className="btn btn-primary">Search</button>
+                </div>
             </form>
         </div>
         <p></p>

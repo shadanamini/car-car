@@ -99,7 +99,9 @@ class AppointmentsForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create An Appointment</h1>
+            <div class="col-md-12 text-center">
+              <h1>Create An Appointment</h1>
+            </div>
             <form onSubmit={this.handleSubmit} id="create-vehicle-model-form">
               <div className="form-floating mb-3">
                 <input value={this.state.vin} onChange={this.handleVinChange} placeholder="Vin" name="vin" required type="text" id="vin" className="form-control"/>
@@ -133,7 +135,9 @@ class AppointmentsForm extends React.Component {
                     })}
                 </select>
               </div>
-              <button className="btn btn-primary">Create!</button>
+              <div class="col-md-12 text-center">
+                <button className="btn btn-primary">Create!</button>
+              </div>
             </form>
           </div>
         </div>

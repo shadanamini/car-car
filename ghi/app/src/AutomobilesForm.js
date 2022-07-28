@@ -82,7 +82,9 @@ class AutomobilesForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Add Automobile To Inventory</h1>
+            <div class="col-md-12 text-center">
+              <h1>Add Automobile To Inventory</h1>
+            </div>
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
               <div className="form-floating mb-3">
                 <input value={this.state.color} onChange={this.handleColorChange} placeholder="Color" required type="text" name="color" id="color" className="form-control" />
@@ -108,7 +110,9 @@ class AutomobilesForm extends React.Component {
                   })}
                 </select>
               </div>
-              <button className="btn btn-primary">Create!</button>
+              <div class="col-md-12 text-center">
+                <button className="btn btn-primary">Create!</button>
+              </div>
             </form>
           </div>
         </div>

@@ -5,7 +5,9 @@ function Automobiles(props) {
     return (
         <>
         <p></p>
-        <h2>Vehicle Models</h2>
+        <div class="col-md-12 text-center">
+            <h2>Vehicle Models</h2>
+        </div>
         <table className="table table-striped">
             <thead>
                 <tr>

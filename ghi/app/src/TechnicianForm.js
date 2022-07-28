@@ -57,7 +57,9 @@ class TechnicianForm extends React.Component {
         <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create Technician</h1>
+            <div class="col-md-12 text-center">
+              <h1>Create Technician</h1>
+            </div>
             <form onSubmit={this.handleSubmit} id="create-technician-form">
               <div className="form-floating mb-3">
                 <input value={this.state.employeeName} onChange={this.handleEmployeeNameChange} placeholder="EmployeeName" name="employee_name" required type="text" id="employee_name" className="form-control"/>
@@ -67,7 +69,9 @@ class TechnicianForm extends React.Component {
                 <input value={this.state.employeeNumber} onChange={this.handleEmployeeNumberChange} placeholder="EmployeeNumber" name="employee_number" required type="text" id="employee_number" className="form-control"/>
                 <label htmlFor="style_name">Employee Number</label>
               </div>
-              <button className="btn btn-primary">Create!</button>
+              <div class="col-md-12 text-center">
+                <button className="btn btn-primary">Create!</button>
+              </div>
             </form>
           </div>
         </div>

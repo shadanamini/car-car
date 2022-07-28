@@ -6,7 +6,9 @@ function AppointmentsList(props) {
     return (
         <>
         <p></p>
-        <h2>Service Appointments</h2>
+        <div class="col-md-12 text-center">
+            <h2>Service Appointments</h2>
+        </div>
         <table className="table table-striped">
             <thead>
                 <tr>

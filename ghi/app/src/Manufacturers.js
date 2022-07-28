@@ -5,7 +5,9 @@ function Manufacturers(props) {
     return (
         <>
         <p></p>
-        <h2>Manufacturer</h2>
+        <div class="col-md-12 text-center">
+            <h2>Manufacturers</h2>
+        </div>
         <table className="table table-striped">
             <thead>
                 <tr>
